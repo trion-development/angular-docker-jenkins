@@ -1,14 +1,14 @@
-import { HerokuDemoPage } from './app.po';
+import { DemoPage } from './app.po';
 
-describe('heroku-demo App', () => {
-  let page: HerokuDemoPage;
+describe('demo App', () => {
+  let page: DemoPage;
 
   beforeEach(() => {
-    page = new HerokuDemoPage();
+    page = new DemoPage();
   });
 
   it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works on heroku!');
+    expect(page.getParagraphText()).toEqual('app works on docker!');
   });
 });
