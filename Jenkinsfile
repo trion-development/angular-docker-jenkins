@@ -53,7 +53,9 @@ node {
     stage ('Build Docker Image') {
       app = docker.build("demo/angular-app")
     }
+
     //optionally some acceptance tests for docker image
+
     stage ('Push Docker Image') {
       milestone()
       docker.withRegistry('http://localhost:5000/') {
