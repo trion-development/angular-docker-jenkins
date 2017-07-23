@@ -42,7 +42,7 @@ node {
           sh 'ng lint'
       }
     }
-    #end docker
+#end docker
 
     stage('Archive') {
         sh 'tar -cvzf dist.tar.gz --strip-components=1 dist'
