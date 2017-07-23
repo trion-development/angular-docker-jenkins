@@ -13,13 +13,14 @@ properties(
     ]
 )
 node {
-    docker.image('trion/ng-cli-karma:1.2.1').inside {
-      stage('Checkout') {
-          //disable to recycle workspace data to save time/bandwidth
-          deleteDir()
-          checkout scm
-      }
 
+    stage('Checkout') {
+        //disable to recycle workspace data to save time/bandwidth
+        deleteDir()
+        checkout scm
+    }
+
+    docker.image('trion/ng-cli-karma:1.2.1').inside {
       stage('NPM Install') {
           withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
               sh 'npm install'
