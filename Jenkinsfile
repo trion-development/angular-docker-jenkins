@@ -50,6 +50,18 @@ node {
         archive 'dist.tar.gz'
     }
 
+    stage ('Build Docker Image') {
+      app = docker.build("demo/angular-app")
+    }
+    //optionally some acceptance tests for docker image
+    stage ('Push Docker Image') {
+      milestone()
+      docker.withRegistry('http://localhost:5000/') {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+        }
+    }
+
     stage('Deploy') {
         milestone()
         echo "Deploying..."
