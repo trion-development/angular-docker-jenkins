@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class HerokuDemoPage {
+export class DemoPage {
   navigateTo() {
     return browser.get('/');
   }
