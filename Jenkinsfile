@@ -21,13 +21,14 @@ node {
     }
 
     withTool('docker') {
-      docker.image('trion/ng-cli-karma:1.2.1').inside {
-        stage('NPM Install') {
-            withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
-                sh 'npm install'
-            }
+        docker.image('trion/ng-cli-karma:1.2.1').inside {
+           stage('NPM Install') {
+              withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
+                 sh 'npm install'
+              }
+           }
         }
-      }
+    }
 
       stage('Build') {
           milestone()
