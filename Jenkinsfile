@@ -59,7 +59,8 @@ node {
     stage ('Push Docker Image') {
       milestone()
       docker.withRegistry('http://localhost:5000/') {
-            app.push("${env.BUILD_NUMBER}")
+            def tag = "${env.BUILD_NUMBER}".trim()
+            app.push(tag)
             app.push("latest")
         }
     }
