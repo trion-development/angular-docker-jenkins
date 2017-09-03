@@ -27,11 +27,6 @@ node {
           }
       }
 
-      stage('Build') {
-          milestone()
-          sh 'ng build --prod --aot --sm --progress=false'
-      }
-
       stage('Test') {
           withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
             sh 'ng test --progress=false --watch false'
@@ -41,6 +36,11 @@ node {
 
       stage('Lint') {
           sh 'ng lint'
+      }
+        
+      stage('Build') {
+          milestone()
+          sh 'ng build --prod --aot --sm --progress=false'
       }
     }
     //end docker
